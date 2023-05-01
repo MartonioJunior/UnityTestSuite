@@ -1,15 +1,15 @@
 {
-    "name": "com.[CompanyName].[PackageName]",
-    "displayName": "[PackageName]",
+    "name": "com.martoniojunior.testsuite",
+    "displayName": "Test Suite",
     "version": "0.0.0",
     "unity": "2021.3",
-    "description": "[Important details about what the package offers]",
+    "description": "Custom Unity Package to ease the creation of tests for packages",
     "dependencies": {},
     "author": {
       "name": "Martônio Júnior",
       "url": "https://github.com/martoniojunior"
     },
-    "repository": "https://github.com/martoniojunior/[PackageName].git",
+    "repository": "https://github.com/martoniojunior/TestSuite.git",
     "license": "MIT",
     "type": "tool"
   }
