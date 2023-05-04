@@ -15,31 +15,43 @@ namespace MartonioJunior.Test
         #region Static Methods
         public static T[] Array<T>(int size, Func<int, T> generator)
         {
+            if (size <= 0 || generator == null) return new T[0];
+
             var result = new T[size];
+
             for (int i = 0; i < size; i++) {
                 result[i] = generator.Invoke(i);
             }
+
             return result;
         }
 
         public static T[] Array<T>(int size, Func<T> generator)
         {
+            if (generator == null) return new T[0];
+
             return Array(size, _ => generator());
         }
 
         public static T[,] Array2D<T>(int width, int height, Func<int, int, T> generator)
         {
-            var result = new T[width,height];
+            if (width <= 0 || height <= 0 || generator == null) return new T[0,0];
+
+            var result = new T[width, height];
+
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     result[x,y] = generator.Invoke(x,y);
                 }
             }
+
             return result;
         }
 
         public static T[,] Array2D<T>(int width, int height, Func<T> generator)
         {
+            if (generator == null) return new T[0,0];
+
             return Array2D(width, height, (_, _) => generator());
         }
 
