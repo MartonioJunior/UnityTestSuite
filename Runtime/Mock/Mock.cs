@@ -11,8 +11,7 @@ namespace MartonioJunior.Test
     {
         #region Variables
         private static readonly List<Object> objectList = new();
-        #endregion
-        #region Properties
+        public static int Count => objectList.Count;
         #endregion
         #region Static Methods
         public static void Clear()
