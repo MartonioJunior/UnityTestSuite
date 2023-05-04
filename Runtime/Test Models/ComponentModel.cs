@@ -7,7 +7,7 @@ namespace MartonioJunior.Test
         #region Abstract
         public abstract void ConfigureValues();
         #endregion
-        #region TestModel Implementation
+        #region Model Implementation
         public override void CreateTestContext()
         {
             modelReference = Mock.GameObject($"{typeof(T)}").AddComponent<T>();

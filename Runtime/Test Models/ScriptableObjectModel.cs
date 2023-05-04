@@ -7,7 +7,7 @@ namespace MartonioJunior.Test
         #region Abstract Implementation
         public abstract void ConfigureValues();
         #endregion
-        #region TestModel Implementation
+        #region Model Implementation
         public override void CreateTestContext()
         {
             modelReference = Mock.ScriptableObject<T>();
