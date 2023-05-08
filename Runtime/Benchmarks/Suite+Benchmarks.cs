@@ -1,4 +1,3 @@
-#if PERFORMANCE_TESTS_ENABLED
 using System;
 using Unity.PerformanceTesting;
 using Unity.PerformanceTesting.Measurements;
@@ -41,4 +40,3 @@ namespace MartonioJunior.Test
         #endregion
     }
 }
-#endif

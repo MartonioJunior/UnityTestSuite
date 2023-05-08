@@ -183,7 +183,6 @@ namespace Tests.MartonioJunior.Test
         }
         #endregion
         #region Suite+Benchmarks
-        #if PERFORMANCE_TESTS_ENABLED
         [Test]
         public void Sample_NoName_RunsActionInsideSampleScope()
         {
@@ -222,7 +221,6 @@ namespace Tests.MartonioJunior.Test
 
             Assert.IsInstanceOf<MethodMeasurement>(result);
         }
-        #endif
         #endregion
     }
 }
