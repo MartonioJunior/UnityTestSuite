@@ -3,7 +3,6 @@ Copyright (c) Martônio Júnior 2023, uses the MIT License
 
 # About
 This package contains small utilities I use for managing tests in all of my packages
-
 # How to Install
 Via Unity Package Manager:
 1. In Unity, go to "Window" -> "Package Manager"
