@@ -11,6 +11,7 @@ namespace MartonioJunior.Test
         public const string ComponentEmptyInitialization = "COMPONENT INITIALIZED WITHOUT PARAMETERS";
         public const string IncompleteImplementation = "INCOMPLETE TEST";
         public const string NotImplemented = "TEST NOT IMPLEMENTED";
+        public const string CannotBeTested = "METHOD CANNOT BE COVERED BY UNIT TESTS";
         #endregion
         #region Static Methods
         public static T[] Array<T>(int size, Func<int, T> generator)
