@@ -4,6 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using MartonioJunior.Test;
+using MockScriptableObject = UnityEngine.ScriptableObject;
 
 namespace Tests.MartonioJunior.Test
 {
@@ -17,7 +18,7 @@ namespace Tests.MartonioJunior.Test
         [Test]
         public void Clear_RemovesAllRegisteredObjects()
         {
-            Mock.Register(NSubstitute.Substitute.For<ScriptableObject>());
+            Mock.Register(ScriptableObject.CreateInstance<MockScriptableObject>());
 
             Mock.Clear();
 
@@ -27,16 +28,16 @@ namespace Tests.MartonioJunior.Test
         [Test]
         public void Register_AddsItemsToObjectList()
         {
-            Mock.Register(NSubstitute.Substitute.For<ScriptableObject>());
+            Mock.Register(ScriptableObject.CreateInstance<MockScriptableObject>());
 
             Assert.AreEqual(1, Mock.Count);
         }
 
         public static IEnumerable GameObject_UseCases()
         {
-            yield return new object[2]{"Item", "Item-Mock"};
-            yield return new object[2]{string.Empty, "-Mock"};
-            yield return new object[2]{null, "-Mock"};
+            yield return new object[]{"Item", "Item-Mock"};
+            yield return new object[]{string.Empty, "-Mock"};
+            yield return new object[]{null, "-Mock"};
         }
         [TestCaseSource(nameof(GameObject_UseCases))]
         public void GameObject_CreatesGameObjectForMocking(string input, string output)

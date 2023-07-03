@@ -22,7 +22,7 @@ namespace MartonioJunior.Test
 
         public static void Register(Object obj)
         {
-            if (obj == null) return;
+            if (obj is null) return;
 
             objectList.Add(obj);
         }
