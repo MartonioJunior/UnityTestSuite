@@ -1,6 +1,6 @@
 using System;
-using NSubstitute;
-using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 using Random = UnityEngine.Random;
 
 namespace MartonioJunior.Test
@@ -16,7 +16,7 @@ namespace MartonioJunior.Test
         #region Static Methods
         public static T[] Array<T>(int size, Func<int, T> generator)
         {
-            if (size <= 0 || generator == null) return new T[0];
+            if (size <= 0 || generator is null) return new T[0];
 
             var result = new T[size];
 
@@ -29,14 +29,14 @@ namespace MartonioJunior.Test
 
         public static T[] Array<T>(int size, Func<T> generator)
         {
-            if (generator == null) return new T[0];
+            if (generator is null) return new T[0];
 
             return Array(size, _ => generator());
         }
 
         public static T[,] Array2D<T>(int width, int height, Func<int, int, T> generator)
         {
-            if (width <= 0 || height <= 0 || generator == null) return new T[0,0];
+            if (width <= 0 || height <= 0 || generator is null) return new T[0,0];
 
             var result = new T[width, height];
 
@@ -51,9 +51,26 @@ namespace MartonioJunior.Test
 
         public static T[,] Array2D<T>(int width, int height, Func<T> generator)
         {
-            if (generator == null) return new T[0,0];
+            if (generator is null) return new T[0,0];
 
             return Array2D(width, height, (_, _) => generator());
+        }
+
+        public static void AssertAll<T>(IEnumerable<T> enumerable, Action<T> assertion)
+        {
+            foreach (var item in enumerable) {
+                assertion(item);
+            }
+        }
+
+        public static object[] Case(params object[] items)
+        {
+            return items;
+        }
+
+        public static IEnumerable<T> Case<T>(params object[] items)
+        {
+            return items.Select(x => (T)x);
         }
 
         public static Predicate<T> FixedPredicate<T>(bool result)

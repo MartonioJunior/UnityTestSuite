@@ -48,7 +48,6 @@ namespace Tests.MartonioJunior.Test
             yield return new object[3]{0, validGenerator, resultArray.ToArray()};
             yield return new object[3]{-referenceValue, validGenerator, resultArray.ToArray()};
 
-
             for(int i = 0; i < referenceValue; i++) resultArray.Add(referenceValue);
             yield return new object[3]{referenceValue, validGenerator, resultArray.ToArray()};
         }
