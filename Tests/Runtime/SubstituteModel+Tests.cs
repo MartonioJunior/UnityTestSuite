@@ -8,11 +8,11 @@ namespace Tests.MartonioJunior.Test
 {
     public class SubstituteModel_Tests: SubstituteModel<ICollection>
     {
-        #region Variables
+        // MARK: Variables
         bool triggeredContext;
         bool triggeredDestroy;
-        #endregion
-        #region Test Model Implementation
+        
+        // MARK: Test Model Implementation
         public override void CreateTestContext()
         {
             triggeredContext = true;
@@ -24,8 +24,8 @@ namespace Tests.MartonioJunior.Test
             triggeredContext = false;
             triggeredDestroy = true;
         }
-        #endregion
-        #region Method Tests
+        
+        // MARK: Method Tests
         [Test]
         public void Setup_CreatesTestContext()
         {
@@ -41,6 +41,6 @@ namespace Tests.MartonioJunior.Test
             Assert.False(triggeredContext);
             Assert.True(triggeredDestroy);
         }
-        #endregion
+        
     }
 }

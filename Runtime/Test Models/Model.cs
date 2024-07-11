@@ -1,19 +1,14 @@
-using System;
-using NSubstitute;
 using NUnit.Framework;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace MartonioJunior.Test
 {
     public abstract class Model
     {
-        #region Abstract
+        // MARK: Abstract
         public abstract void CreateTestContext();
         public abstract void DestroyTestContext();
-        #endregion
-        #region Methods
+        
+        // MARK: Methods
         [SetUp]
         public void Setup()
         {
@@ -26,13 +21,14 @@ namespace MartonioJunior.Test
             DestroyTestContext();
             Mock.Clear();
         }
-        #endregion
+        
     }
 
+    #region Model<T>
     public abstract class Model<T>: Model
     {
-        #region Variables
+        // MARK: Variables
         protected T modelReference;
-        #endregion
     }
+    #endregion
 }

@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 namespace MartonioJunior.Test
 {
     public static partial class Mock
     {
-        #region Methods
+        // MARK: Methods
         public static GameObject GameObject(string name)
         {
             var gameObject = new GameObject(name+"-Mock");
@@ -31,6 +30,6 @@ namespace MartonioJunior.Test
             Register(sprite);
             return sprite;
         }
-        #endregion
+        
     }
 }

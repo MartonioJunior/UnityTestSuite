@@ -12,11 +12,11 @@ namespace Tests.MartonioJunior.Test
 {
     public class Suite_Tests: Model
     {
-        #region Model Implementation
+        // MARK: Model Implementation
         public override void CreateTestContext() {}
         public override void DestroyTestContext() {}
-        #endregion
-        #region Method Tests
+        
+        // MARK: Method Tests
         public static IEnumerable Array_Index_UseCases()
         {
             var referenceValue = Random.Range(1,10);
@@ -179,8 +179,8 @@ namespace Tests.MartonioJunior.Test
             Assert.AreEqual(result, output);
             Assert.AreEqual(variable, output);
         }
-        #endregion
-        #region Suite+Benchmarks
+        
+        // MARK: Suite+Benchmarks
         [Test]
         public void Sample_NoName_RunsActionInsideSampleScope()
         {
@@ -209,6 +209,6 @@ namespace Tests.MartonioJunior.Test
 
             Assert.IsInstanceOf<MethodMeasurement>(result);
         }
-        #endregion
+        
     }
 }

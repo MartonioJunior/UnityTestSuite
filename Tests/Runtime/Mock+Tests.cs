@@ -10,11 +10,11 @@ namespace Tests.MartonioJunior.Test
 {
     public class Mock_Tests: Model
     {
-        #region Model Implementation
+        // MARK: Model Implementation
         public override void CreateTestContext() {}
         public override void DestroyTestContext() {}
-        #endregion
-        #region Method Tests
+        
+        // MARK: Method Tests
         [Test]
         public void Clear_RemovesAllRegisteredObjects()
         {
@@ -78,6 +78,6 @@ namespace Tests.MartonioJunior.Test
             Assert.AreEqual(Vector2.zero, result.pivot);
             Assert.AreEqual(1, Mock.Count);
         }
-        #endregion
+        
     }
 }

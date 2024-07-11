@@ -1,13 +1,12 @@
 using System;
 using Unity.PerformanceTesting;
 using Unity.PerformanceTesting.Measurements;
-using UnityEngine;
 
 namespace MartonioJunior.Test
 {
     public static partial class Suite
     {
-        #region Methods
+        // MARK: Methods
         public static void Sample(Action action)
         {
             using (Measure.Scope()) {
@@ -23,20 +22,9 @@ namespace MartonioJunior.Test
             }
         }
 
-        public static void Sample(string name, double value)
-        {
-            Measure.Custom(name, value);
-        }
+        public static void Sample(string name, double value) => Measure.Custom(name, value);
+        public static FramesMeasurement SampleFPS() => Measure.Frames();
+        public static MethodMeasurement SampleMethod(Action action) => Measure.Method(action);
 
-        public static FramesMeasurement SampleFPS()
-        {
-            return Measure.Frames();
-        }
-
-        public static MethodMeasurement SampleMethod(Action action)
-        {
-            return Measure.Method(action);
-        }
-        #endregion
     }
 }

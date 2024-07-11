@@ -2,12 +2,15 @@ using UnityEngine;
 
 namespace MartonioJunior.Test
 {
-    public abstract class ComponentModel<T>: Model<T> where T: MonoBehaviour
+    public abstract partial class ComponentModel<T> where T: MonoBehaviour
     {
-        #region Abstract
+        // MARK: Abstract
         public abstract void ConfigureValues();
-        #endregion
-        #region Model Implementation
+    }
+
+    #region Model Implementation
+    public partial class ComponentModel<T>: Model<T>
+    {
         public override void CreateTestContext()
         {
             modelReference = Mock.GameObject($"{typeof(T)}").AddComponent<T>();
@@ -18,6 +21,6 @@ namespace MartonioJunior.Test
         {
             modelReference = null;
         }
-        #endregion
     }
+    #endregion
 }

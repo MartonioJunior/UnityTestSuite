@@ -1,19 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NSubstitute;
 using Random = UnityEngine.Random;
 
 namespace MartonioJunior.Test
 {
+    #region Assert
     public static partial class Suite
     {
-        #region Constants (Messages)
-        public const string ComponentEmptyInitialization = "COMPONENT INITIALIZED WITHOUT PARAMETERS";
-        public const string IncompleteImplementation = "INCOMPLETE TEST";
-        public const string NotImplemented = "TEST NOT IMPLEMENTED";
-        public const string CannotBeTested = "METHOD CANNOT BE COVERED BY UNIT TESTS";
-        #endregion
-        #region Static Methods
+        public static void AssertAll<T>(IEnumerable<T> enumerable, Action<T> assertion)
+        {
+            foreach (var item in enumerable) {
+                assertion(item);
+            }
+        }
+
+        public static T Called<T>(this T substitute, int requiredNumberOfCalls) where T: class
+        {
+            return requiredNumberOfCalls > 0 ? substitute.Received(requiredNumberOfCalls) : substitute.DidNotReceive();
+        }
+    }
+    #endregion
+
+    #region Collections
+    public static partial class Suite
+    {
         public static T[] Array<T>(int size, Func<int, T> generator)
         {
             if (size <= 0 || generator is null) return new T[0];
@@ -56,13 +68,6 @@ namespace MartonioJunior.Test
             return Array2D(width, height, (_, _) => generator());
         }
 
-        public static void AssertAll<T>(IEnumerable<T> enumerable, Action<T> assertion)
-        {
-            foreach (var item in enumerable) {
-                assertion(item);
-            }
-        }
-
         public static object[] Case(params object[] items)
         {
             return items;
@@ -72,7 +77,34 @@ namespace MartonioJunior.Test
         {
             return items.Select(x => (T)x);
         }
+    }
+    #endregion
+    
+    #region Substitute
+    public static partial class Suite
+    {
+        public static T Substitute<T>() where T : class => NSubstitute.Substitute.For<T>();
+        public static T Substitute<T>(out T output) where T: class
+        {
+            output = Substitute<T>();
+            return output;
+        }
+    }
+    #endregion
 
+    #region Test Messages
+    public static partial class Suite
+    {
+        public const string ComponentEmptyInitialization = "COMPONENT INITIALIZED WITHOUT PARAMETERS";
+        public const string IncompleteImplementation = "INCOMPLETE TEST";
+        public const string NotImplemented = "TEST NOT IMPLEMENTED";
+        public const string CannotBeTested = "METHOD CANNOT BE COVERED BY UNIT TESTS";
+    }
+    #endregion
+
+    #region Utilities
+    public static partial class Suite
+    {
         public static Predicate<T> FixedPredicate<T>(bool result)
         {
             return _ => result;
@@ -84,22 +116,12 @@ namespace MartonioJunior.Test
             else return Random.Range(minInclusive, maxInclusive);
         }
 
-        public static T Substitute<T>() where T: class
-        {
-            return NSubstitute.Substitute.For<T>();
-        }
-
-        public static T Substitute<T>(out T output) where T: class
-        {
-            output = Substitute<T>();
-            return output;
-        }
 
         public static T Set<T>(this T value, out T output)
         {
             output = value;
             return value;
         }
-        #endregion
     }
+    #endregion
 }

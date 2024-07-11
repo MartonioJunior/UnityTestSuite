@@ -1,19 +1,15 @@
-using UnityEngine;
 using System.Collections.Generic;
-using NSubstitute;
-using System.Collections;
-using System;
 using Object = UnityEngine.Object;
 
 namespace MartonioJunior.Test
 {
     public static partial class Mock
     {
-        #region Variables
+        // MARK: Variables
         private static readonly List<Object> objectList = new();
         public static int Count => objectList.Count;
-        #endregion
-        #region Static Methods
+        
+        // MARK: Static Methods
         public static void Clear()
         {
             objectList.ForEach(Object.DestroyImmediate);
@@ -26,6 +22,6 @@ namespace MartonioJunior.Test
 
             objectList.Add(obj);
         }
-        #endregion
+        
     }
 }

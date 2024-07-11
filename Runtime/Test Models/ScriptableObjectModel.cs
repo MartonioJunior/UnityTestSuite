@@ -2,12 +2,15 @@ using UnityEngine;
 
 namespace MartonioJunior.Test
 {
-    public abstract class ScriptableObjectModel<T>: Model<T> where T: ScriptableObject
+    public abstract partial class ScriptableObjectModel<T> where T: ScriptableObject
     {
-        #region Abstract Implementation
+        // MARK: Abstract
         public abstract void ConfigureValues();
-        #endregion
-        #region Model Implementation
+    }
+
+    #region Model Implementation
+    public partial class ScriptableObjectModel<T>: Model<T>
+    {
         public override void CreateTestContext()
         {
             modelReference = Mock.ScriptableObject<T>();
@@ -18,6 +21,6 @@ namespace MartonioJunior.Test
         {
             modelReference = null;
         }
-        #endregion
     }
+    #endregion
 }

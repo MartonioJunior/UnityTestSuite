@@ -6,15 +6,15 @@ using MartonioJunior.Test;
 
 namespace Tests.MartonioJunior.Test
 {
-    #region Mock Classes
+    // MARK: Mock Classes
     public class MockBehaviour: MonoBehaviour {}
-    #endregion
+    
     public class ComponentModel_Tests: ComponentModel<MockBehaviour>
     {
-        #region Variables
+        // MARK: Variables
         bool activatedValue;
-        #endregion
-        #region Model Implementation
+        
+        // MARK: Model Implementation
         public override void ConfigureValues()
         {
             activatedValue = true;
@@ -24,13 +24,13 @@ namespace Tests.MartonioJunior.Test
         {
             activatedValue = false;
         }
-        #endregion
-        #region Method Tests
+        
+        // MARK: Method Tests
         [Test]
         public void ConfigureValues_DefinesValuesForComponent()
         {
             Assert.True(activatedValue);
         }
-        #endregion
+        
     }
 }

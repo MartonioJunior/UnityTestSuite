@@ -1,11 +1,12 @@
-using UnityEngine;
 using static MartonioJunior.Test.Suite;
 
 namespace MartonioJunior.Test
 {
-    public partial class SubstituteModel<T> : Model<T> where T: class
+    public partial class SubstituteModel<T> where T: class {}
+
+    #region Model Implementation
+    public partial class SubstituteModel<T>: Model<T>
     {
-        #region Model Implementation
         public override void CreateTestContext()
         {
             modelReference = Substitute<T>();
@@ -15,6 +16,6 @@ namespace MartonioJunior.Test
         {
             modelReference = null;
         }
-        #endregion
     }
+    #endregion
 }

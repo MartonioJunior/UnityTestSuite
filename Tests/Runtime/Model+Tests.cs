@@ -8,11 +8,11 @@ namespace Tests.MartonioJunior.Test
 {
     public class Model_Tests: Model
     {
-        #region Variables
+        // MARK: Variables
         bool triggeredContext;
         bool triggeredDestroy;
-        #endregion
-        #region Model Implementation
+        
+        // MARK: Model Implementation
         public override void CreateTestContext()
         {
             triggeredContext = true;
@@ -24,8 +24,8 @@ namespace Tests.MartonioJunior.Test
             triggeredContext = false;
             triggeredDestroy = true;
         }
-        #endregion
-        #region Method Tests
+        
+        // MARK: Method Tests
         [Test]
         public void Setup_CreatesTestContext()
         {
@@ -41,22 +41,22 @@ namespace Tests.MartonioJunior.Test
             Assert.False(triggeredContext);
             Assert.True(triggeredDestroy);
         }
-        #endregion
+        
     }
 
     public class Generic_Model_Tests: Model<int>
     {
-        #region Model Implementation
+        // MARK: Model Implementation
         public override void CreateTestContext() {}
         public override void DestroyTestContext() {}
-        #endregion
-        #region Method Tests
+        
+        // MARK: Method Tests
         [Test]
         public void ModelReference_IsVariableUsedForModel()
         {
             Assert.AreEqual(default(int), modelReference);
             Assert.IsInstanceOf<int>(modelReference);
         }
-        #endregion
+        
     }
 }
