@@ -148,23 +148,6 @@ namespace Tests.MartonioJunior.Test
             Assert.LessOrEqual(result, maxOutput);
         }
 
-        [Test]
-        public void Substitute_CreatesReplacementForClassInTests()
-        {
-            var result = Suite.Substitute<ICollection>();
-
-            Assert.IsInstanceOf<ICollection>(result);
-        }
-
-        [Test]
-        public void Substitute_out_CreatesReplacementForClassInTests()
-        {
-            var result = Suite.Substitute(out ICollection output);
-
-            Assert.IsInstanceOf<ICollection>(result);
-            Assert.AreEqual(result, output);
-        }
-
         public static IEnumerable Set_UseCases()
         {
             var value = Random.Range(-10000,10000);

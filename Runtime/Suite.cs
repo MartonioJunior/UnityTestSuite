@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NSubstitute;
 using Random = UnityEngine.Random;
 
 namespace MartonioJunior.Test
@@ -14,11 +13,6 @@ namespace MartonioJunior.Test
             foreach (var item in enumerable) {
                 assertion(item);
             }
-        }
-
-        public static T Called<T>(this T substitute, int requiredNumberOfCalls) where T: class
-        {
-            return requiredNumberOfCalls > 0 ? substitute.Received(requiredNumberOfCalls) : substitute.DidNotReceive();
         }
     }
     #endregion
@@ -76,18 +70,6 @@ namespace MartonioJunior.Test
         public static IEnumerable<T> Case<T>(params object[] items)
         {
             return items.Select(x => (T)x);
-        }
-    }
-    #endregion
-    
-    #region Substitute
-    public static partial class Suite
-    {
-        public static T Substitute<T>() where T : class => NSubstitute.Substitute.For<T>();
-        public static T Substitute<T>(out T output) where T: class
-        {
-            output = Substitute<T>();
-            return output;
         }
     }
     #endregion
